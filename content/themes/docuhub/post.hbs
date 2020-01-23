@@ -1,0 +1,70 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{#post}}
+
+<main id="site-main">
+  <div class="container">
+    <div class="inner">
+      <article class="post-wrapper">
+        <header class="post-header">
+          <h1 class="post-title">{{title}}</h1>
+        </header>
+
+        <section class="post-content">
+          {{content}}
+        </section>
+
+        <nav class="post-nav {{^next_post}}singluar{{/next_post}} {{^prev_post}}singluar{{/prev_post}}">
+          {{#next_post}}
+          <a href="{{url}}" class="post-nav-link">
+            <div class="post-nav-link-icon">
+              <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg>
+            </div>
+            <div class="post-nav-link-text">
+              <span>Previous</span>
+              {{title}}
+            </div>
+          </a>
+          {{/next_post}}
+
+          {{#prev_post}}
+          <a href="{{url}}" class="post-nav-link">
+            <div class="post-nav-link-text">
+              <span>Next</span>
+              {{title}}
+            </div>
+            <div class="post-nav-link-icon">
+              <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+            </div>
+          </a>
+          {{/prev_post}}
+        </nav>
+
+        <footer class="post-card-footer post-meta">
+          <div class="post-author-date">
+            {{> "author-list"}}
+            <span class="reading-time">{{t "Updated"}} <time class="post-full-meta-date" datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at timeago="true"}}</time></span>
+          </div>
+
+          {{> "breadcrumbs"}}
+        </footer>
+      </article>
+    </div>
+  </div>
+</main>
+
+<section class="post-full-comments container">
+    {{> "comments"}}
+</section>
+
+<script>
+  var navItem = document.getElementById("post-{{slug}}");
+
+  navItem.className += 'active';
+  navItem.parentElement.parentElement.className = 'active';
+</script>
+
+{{/post}}
