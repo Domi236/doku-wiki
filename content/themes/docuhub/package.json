@@ -59,7 +59,7 @@
     "lunr": "^2.3.6",
     "lunr-languages": "^1.1.0",
     "node-sass": "^4.11.0",
-    "prismjs": "^1.16.0"
+    "prismjs": "^1.21.0"
   },
   "config": {
     "posts_per_page": 5,
